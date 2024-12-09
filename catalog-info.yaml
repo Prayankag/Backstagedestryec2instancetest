@@ -1,0 +1,44 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: githubdevdemo1
+  description: provision EC2 server for dev environment
+spec:
+  owner: 
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: githubdevdemo1
+  description: provision EC2 server for dev environment
+  annotations:
+     backstage.io/techdocs-ref: dir:./docs
+     github.com/project-slug: prayankag/Backstagedestryec2instancetest
+     github-actions: enabled
+     github.com/workflows: |
+      [
+        {
+          "workflow": "instance.yaml",
+          "label": "Start",
+          "tooltip": "click here and start the workflow process"
+        }
+      ]
+spec:
+  type: service
+  owner: 
+  lifecycle: experimental
+  system: githubdevdemo1
+  providesApis:
+    - githubdevdemo1
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: githubdevdemo1
+  description: provision EC2 server for dev environment
+spec:
+  type: internal
+  lifecycle: experimental
+  owner: 
+  system: githubdevdemo1
+  definition: "provision EC2 server for dev environment"
